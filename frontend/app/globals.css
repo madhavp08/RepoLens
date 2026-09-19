@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #14110d;
+  --bg-raised: #1c1812;
+  --line: #3a3226;
+  --ink: #f4ead6;
+  --muted: #9b8d75;
+  --copper: #d4894a;
+  --copper-dim: #8a5a2b;
+  --ok: #b7c48a;
+  --bad: #d27a66;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  background-image:
+    radial-gradient(1200px 500px at 10% -10%, rgba(212, 137, 74, 0.12), transparent 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 28%);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(212, 137, 74, 0.35);
+}
