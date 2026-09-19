@@ -1,0 +1,18 @@
+---
+description: What RepoLens is and the product story to preserve
+alwaysApply: true
+---
+
+# RepoLens identity
+
+RepoLens is a full-stack RAG **search engine for GitHub history**, not "chat with a repo."
+
+Value is **finding cited historical evidence** (issues, PRs, comments, docs, releases, ADRs), not generating an explanation from pretrained knowledge.
+
+Preserve this evolution:
+
+ingestion + index → hybrid retrieval (lexical + vector) → RRF → rerank → grounded generation + citations → retrieval debug → quantitative eval (Recall@K, MRR, NDCG, groundedness, latency, cost)
+
+Do not collapse this into a single chat endpoint that dumps chunks into an LLM.
+
+If evidence is insufficient, say so. Never invent historical reasons (e.g. "they chose Postgres for scalability") from current code or a README mention alone.
