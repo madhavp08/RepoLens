@@ -1,18 +1,16 @@
 ---
-description: What RepoLens is and the product story to preserve
+description: RepoLens product direction after the fresh start
 alwaysApply: true
 ---
 
-# RepoLens identity
+# RepoLens
 
-RepoLens is a full-stack RAG **search engine for GitHub history**, not "chat with a repo."
+Build a shared knowledge platform for GitHub repositories covering source code, docs, issues, PRs, comments, releases, and development history.
 
-Value is **finding cited historical evidence** (issues, PRs, comments, docs, releases, ADRs), not generating an explanation from pretrained knowledge.
+Source-code indexing is in scope. The previous history-only restriction is superseded.
 
-Preserve this evolution:
+The previous local setup has been cleared. Treat all product capabilities as planned until implemented and verified in the current checkout.
 
-ingestion + index → hybrid retrieval (lexical + vector) → RRF → rerank → grounded generation + citations → retrieval debug → quantitative eval (Recall@K, MRR, NDCG, groundedness, latency, cost)
+Preserve evidence provenance and repository/version boundaries. Answers should cite supporting evidence and acknowledge missing evidence. Keep private data permission-scoped if private repositories are introduced.
 
-Do not collapse this into a single chat endpoint that dumps chunks into an LLM.
-
-If evidence is insufficient, say so. Never invent historical reasons (e.g. "they chose Postgres for scalability") from current code or a README mention alone.
+Choose architecture and integrations based on the rebuild requirements. Do not treat previous resume bullets as proof of implementation. Demonstrate improvements over an LLM connected to GitHub through comparable evaluations.

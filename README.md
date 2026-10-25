@@ -1,36 +1,19 @@
 # RepoLens
 
-RepoLens is a search engine for GitHub history. It indexes documentation and releases into PostgreSQL, then answers engineering questions with cited repository evidence — not a live `gh` + LLM loop.
+RepoLens is a planned shared knowledge platform for GitHub repositories, bringing source code, documentation, issues, pull requests, comments, releases, and development history into one searchable place.
 
-This first slice:
+## Fresh start
 
-1. Accepts a public GitHub URL
-2. Ingests README, docs, ADRs, changelogs, and releases (wave 0)
-3. Makes that corpus keyword-searchable immediately
-4. Queues a wave 1 job for issues/PRs (not fetched yet)
+The previous local setup has been cleared. No application, ingestion pipeline, search index, generated answers, evaluations, or deployment is implemented in this checkout.
 
-## Run locally
+## Product direction
 
-```bash
-cp .env.example .env
-docker compose up -d db
-cd backend && python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-alembic upgrade head
-uvicorn app.main:app --reload --port 8000
-```
+- Index public repositories once and reuse the index across users.
+- Connect source-code structure with documentation and development discussions.
+- Answer questions using relevant evidence with citations pinned to the indexed version.
+- Keep repository knowledge fresh and expose indexing coverage.
+- Evaluate answer quality, citation accuracy, retrieval quality, latency, and cost against an LLM connected directly to the GitHub API.
 
-In another terminal:
+These are intended capabilities, not implemented claims. Architecture, integrations, and deployment will be chosen during the rebuild.
 
-```bash
-cd frontend && npm install && npm run dev
-```
-
-Open http://localhost:3000. Set `GITHUB_TOKEN` in `.env` for authenticated GitHub API access (unauthenticated ingest is limited to 60 requests/hour).
-
-## API
-
-- `POST /v1/repositories` — start wave 0 ingest
-- `GET /v1/repositories/{id}` — repo + job coverage
-- `GET /v1/jobs/{id}` — ingest progress
-- `POST /v1/repositories/{id}/search` — keyword search over indexed chunks
+Git history and existing branches remain available. Local credentials are retained in the ignored `.env`; review them when configuring integrations.
